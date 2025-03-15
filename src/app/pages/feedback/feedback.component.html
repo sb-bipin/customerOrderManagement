@@ -1,0 +1,50 @@
+<div class="container my-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3><i class="fas fa-comment-dots"></i> We Value Your Feedback</h3>
+                    <p>Your feedback helps us improve our services and provide you with a better experience!</p>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit(feedbackForm)" #feedbackForm="ngForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="John Doe"
+                                [(ngModel)]="feedback.name" name="name" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="example@mail.com"
+                                [(ngModel)]="feedback.email" name="email" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="rating" class="form-label">Rating</label>
+                            <div class="rating">
+                                <i class="fas fa-star" *ngFor="let star of stars; let i = index"
+                                    [class.filled]="i < rating" (click)="setRating(i+1)"></i>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="feedback" class="form-label">Your Feedback</label>
+                            <textarea class="form-control" id="feedback" rows="4" placeholder="Share your thoughts..."
+                                [(ngModel)]="feedback.feedback" name="feedback" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isSubmitted" class="alert alert-success mt-4 text-center">
+        <strong>Thank you for your feedback!</strong> We truly appreciate your time and input.
+    </div>
+</div>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,31 @@
+<div class="container my-2">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-12">
+            <h2 class="text-center mb-3">Customer Reviews</h2>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3" *ngFor="let review of reviews">
+                    <div class="card shadow-lg rounded">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="mb-0">{{ review.name }}</h5>
+                            <p class="mb-0 text-muted">{{ review.date | date: 'mediumDate' }}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ review.feedback }}</p>
+                            <div class="rating">
+                                <i class="fas fa-star" *ngFor="let star of stars; let i = index"
+                                    [class.filled]="i < review.rating"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="reviews.length === 0" class="alert alert-info text-center mt-4">
+                No reviews yet. Be the first to share your experience!
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
