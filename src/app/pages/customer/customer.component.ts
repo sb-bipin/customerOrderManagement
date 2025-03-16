@@ -5,7 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-customer',
   imports: [RouterOutlet],
   templateUrl: './customer.component.html',
-  styleUrl: './customer.component.scss'
+  styleUrl: './customer.component.scss',
+  standalone: true
 })
 export class CustomerComponent {
 
