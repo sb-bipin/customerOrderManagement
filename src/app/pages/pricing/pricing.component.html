@@ -1,3 +1,68 @@
-<div class="container-fluid">
-    <p>pricing works!</p>
+<div class="container-fluid m-0 p-0">
+
+    <div class="container-fluid m-0 p-0 bg-light">
+        <header class="text-center py-1 bg-secondary text-white">
+            <h1 class="display-4">Pricing Menu</h1>
+            <p class="lead">Explore our snacks, drinks, and desserts at amazing prices!</p>
+        </header>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning text-white d-flex justify-content-between">
+                            <h3>Snacks</h3>
+                            <h3 class="fst-italic">Half/Full</h3>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div *ngFor="let snack of snacks">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="">{{ snack.name }}</span>
+                                    <span class="fst-italic">{{ snack.priceHalf }} / {{ snack.priceFull }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white d-flex justify-content-between">
+                            <h3>Drinks</h3>
+                            <h3 class="fst-italic">Per Piece</h3>
+
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div *ngFor="let drink of drinks">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="">{{ drink.name }}</span>
+                                    <span class="fst-italic">{{ drink.pricePerPiece }} / piece</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-danger text-white d-flex justify-content-between">
+                            <h3>Desserts</h3>
+                            <h3 class="fst-italic">Per Piece</h3>
+
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div *ngFor="let dessert of desserts">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="">{{ dessert.name }}</span>
+                                    <span class="fst-italic">{{ dessert.pricePerPiece }} / piece</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
