@@ -1,1 +1,114 @@
-<p>view-order works!</p>
+<div class="container-fluid bg-light m-0 p-0">
+    <!-- Header Section -->
+    <header class="text-center py-2 bg-secondary text-white">
+        <h1 class="display-4">Your Orders</h1>
+        <p class="lead">Here are the details of your orders. You can review the items, quantities, prices, and status.
+        </p>
+    </header>
+
+    <div class="container mt-5">
+        <!-- Loop through multiple orders -->
+        <div *ngFor="let order of orders" class="mb-5">
+            <!-- Order Summary Table -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Order Summary</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Total Amount</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.customerName }}</td>
+                                <td>{{ order.date | date }}</td>
+                                <td>
+                                    <span class="badge" [ngClass]="{
+                                        'bg-success': order.status === 'Completed',
+                                        'bg-warning': order.status === 'Pending'
+                                    }">{{ order.status }}</span>
+                                </td>
+                                <td>${{ order.totalAmount }}</td>
+                                <td>
+                                    <button class="btn btn-info" (click)="viewOrderDetails(order)">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Viewing Order Details -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                    <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Order Information -->
+                            <div class="col-md-6">
+                                <p><strong>Order ID:</strong> {{ selectedOrder?.id }}</p>
+                                <p><strong>Customer Name:</strong> {{ selectedOrder?.customerName }}</p>
+                                <p><strong>Date:</strong> {{ selectedOrder?.date | date }}</p>
+                                <p><strong>Status:</strong>
+                                    <span class="badge" [ngClass]="{
+                                        'bg-success': selectedOrder?.status === 'Completed',
+                                        'bg-warning': selectedOrder?.status === 'Pending'
+                                    }">{{ selectedOrder?.status }}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Total Amount:</strong> ${{ selectedOrder?.totalAmount }}</p>
+                                <button class="btn btn-outline-primary">Download Invoice</button>
+                            </div>
+                        </div>
+
+                        <!-- Order Items Table -->
+                        <h5 class="mt-4">Order Items</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of selectedOrder?.items">
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>${{ item.price }}</td>
+                                    <td>${{ item.quantity * item.price }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>${{ selectedOrder?.totalAmount }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

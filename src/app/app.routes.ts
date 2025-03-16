@@ -1,4 +1,4 @@
-import { NoPreloading, RouterModule, Routes } from '@angular/router';
+import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
@@ -29,5 +29,5 @@ export const routes: Routes = [
     { path: '**', redirectTo: '/home', pathMatch: 'full' },  //if path dont match any route, redirect to home
 ];
 
-//dont load any module until the user navigates to it
-export const AppRoutingModule = RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading });
+// load all module on start of appplication
+export const AppRoutingModule = RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules });
