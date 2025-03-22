@@ -1,13 +1,15 @@
 import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { customer_routes } from './pages/customer/customer.routes';
 
 export const routes: Routes = [
     {
         path: 'home',
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
     },
-    { //lazy load customer component
+    {
         path: 'customer',
-        loadChildren: () => import('./pages/customer/customer.routes').then(m => m.customer_routes)
+        loadComponent: () => import('./pages/customer/customer.component').then(m => m.CustomerComponent),
+        children: customer_routes
     },
     {
         path: 'pricing',

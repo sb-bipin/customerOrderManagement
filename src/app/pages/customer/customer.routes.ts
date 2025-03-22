@@ -1,12 +1,16 @@
 import { Routes } from '@angular/router';
+import { AddOrderComponent } from './add-order/add-order.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
+import { CustomerComponent } from './customer.component';
 
 export const customer_routes: Routes = [
     {
         path: '',
-        loadComponent: () => import('./customer.component').then(m => m.CustomerComponent),
+        component: CustomerComponent,
         children: [
-            { path: 'add-order', loadComponent: () => import('./add-order/add-order.component').then(m => m.AddOrderComponent) },
-            { path: 'view-order', loadComponent: () => import('./view-order/view-order.component').then(m => m.ViewOrderComponent) },
+            { path: '', redirectTo: 'add-order', pathMatch: 'full' },
+            { path: 'add-order', component: AddOrderComponent },
+            { path: 'view-order', component: ViewOrderComponent },
         ],
     },
 ];

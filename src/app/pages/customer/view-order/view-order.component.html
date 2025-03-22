@@ -37,7 +37,7 @@
                                 </td>
                                 <td>${{ order.totalAmount }}</td>
                                 <td>
-                                    <button class="btn btn-info" (click)="viewOrderDetails(order)">View</button>
+                                    <button class="btn btn-info" (click)="viewOrderDetailsDialog(order)">View</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -47,14 +47,16 @@
         </div>
     </div>
 
+
     <!-- Modal for Viewing Order Details -->
-    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
-        aria-hidden="true">
+    <p-dialog class="bg-light" [(visible)]=" isOrderDetailsDialogOpen" [modal]="true" [responsive]="true"
+        [style]="{width: '70vw'}" [closable]="true" [dismissableMask]="true" [baseZIndex]="10000"
+        aria-labelledby="orderDetailsModalLabel" disableAutofocus>
+
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
-                    <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -66,9 +68,9 @@
                                 <p><strong>Date:</strong> {{ selectedOrder?.date | date }}</p>
                                 <p><strong>Status:</strong>
                                     <span class="badge" [ngClass]="{
-                                        'bg-success': selectedOrder?.status === 'Completed',
-                                        'bg-warning': selectedOrder?.status === 'Pending'
-                                    }">{{ selectedOrder?.status }}</span>
+                                    'bg-success': selectedOrder?.status === 'Completed',
+                                    'bg-warning': selectedOrder?.status === 'Pending'
+                                }">{{ selectedOrder?.status }}</span>
                                 </p>
                             </div>
                             <div class="col-md-6">
@@ -106,9 +108,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                    <button type="button" class="btn btn-secondary" (click)="closeOrderDetailsDialog()">Close</button>
                 </div>
             </div>
         </div>
-    </div>
+    </p-dialog>
+
+
 </div>

@@ -3,10 +3,11 @@ import { PricingService } from '../../../core/services/pricing.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AutoFocusModule } from 'primeng/autofocus';
 
 @Component({
   selector: 'app-add-order',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule, AutoFocusModule],
   providers: [PricingService],
   templateUrl: './add-order.component.html',
   styleUrl: './add-order.component.scss',

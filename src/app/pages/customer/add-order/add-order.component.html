@@ -36,11 +36,11 @@
                                 <p class="card-text">Price: {{ snack.priceHalf }} / {{ snack.priceFull }}</p>
                                 <label for="quantity" class="form-label">Total Half-Quantity:</label>
                                 <input type="number" class="form-control" id="quantity" [(ngModel)]="snack.halfQuantity"
-                                    min="1" placeholder="Enter quantity">
+                                    min="1" placeholder="Enter quantity" pInputText />
 
                                 <label for="quantity" class="form-label">Total Full-Quantity:</label>
                                 <input type="number" class="form-control" id="quantity" [(ngModel)]="snack.fullQuantity"
-                                    min="1" placeholder="Enter quantity">
+                                    min="1" placeholder="Enter quantity" pInputText />
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 <p class="card-text">Price: {{ drink.pricePerPiece }} / piece</p>
                                 <label for="quantity" class="form-label">Quantity:</label>
                                 <input type="number" class="form-control" id="quantity" [(ngModel)]="drink.quantity"
-                                    min="1" placeholder="Enter quantity">
+                                    min="1" placeholder="Enter quantity" pInputText />
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                 <p class="card-text">Price: {{ dessert.pricePerPiece }} / piece</p>
                                 <label for="quantity" class="form-label">Quantity:</label>
                                 <input type="number" class="form-control" id="quantity" [(ngModel)]="dessert.quantity"
-                                    min="1" placeholder="Enter quantity">
+                                    min="1" placeholder="Enter quantity" pInputText />
                             </div>
                         </div>
                     </div>
