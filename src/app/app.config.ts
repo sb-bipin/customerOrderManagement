@@ -11,25 +11,25 @@ import { definePreset } from '@primeng/themes';
 const MyPreset = definePreset(Aura, {
   semantic: {
     primary: {
-      50: '{indigo.50}',
-      100: '{indigo.100}',
-      200: '{indigo.200}',
-      300: '{indigo.300}',
-      400: '{indigo.400}',
-      500: '{indigo.500}',
-      600: '{indigo.600}',
-      700: '{indigo.700}',
-      800: '{indigo.800}',
-      900: '{indigo.900}',
-      950: '{indigo.950}'
+      50: '{lightBlue.50}',
+      100: '{lightBlue.100}',
+      200: '{lightBlue.200}',
+      300: '{lightBlue.300}',
+      400: '{lightBlue.400}',
+      500: '{lightBlue.500}',
+      600: '{lightBlue.600}',
+      700: '{lightBlue.700}',
+      800: '{lightBlue.800}',
+      900: '{lightBlue.900}',
+      950: '{lightBlue.950}'
     },
     background: {
       surface: '#ffffff',
-      overlay: '#f8f9fa',
+      overlay: '#e5f6ff',
     },
     text: {
-      primary: '#000000',
-      secondary: '#374151'
+      primary: '#1e3a8a',
+      secondary: '#4b6d9d'
     }
   }
 });
